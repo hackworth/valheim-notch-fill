@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>NotchFill</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <!-- Unity assemblies come from a local Valheim install; build.sh passes BepInExCore. -->
+    <GameDir Condition="'$(GameDir)' == ''">$(HOME)/Library/Application Support/Steam/steamapps/common/Valheim</GameDir>
+    <BepInExCore Condition="'$(BepInExCore)' == ''">$(GameDir)/BepInEx/core</BepInExCore>
+    <Managed>$(GameDir)/Valheim.app/Contents/Resources/Data/Managed</Managed>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="BepInEx" HintPath="$(BepInExCore)/BepInEx.dll" Private="false" />
+    <Reference Include="UnityEngine" HintPath="$(Managed)/UnityEngine.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(Managed)/UnityEngine.CoreModule.dll" Private="false" />
+  </ItemGroup>
+</Project>

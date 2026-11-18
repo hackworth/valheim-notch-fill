@@ -1,0 +1,5 @@
+build/
+dist/
+plugin/bin/
+plugin/obj/
+.DS_Store
